@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:async';
 
 String url = "https://swapi.co/api/people/?format=json";
+String favoriteUrl = "http://private-782d3-starwarsfavorites.apiary-mock.com/favorite/";
 int countpage = 2;
 
 class StarWarsApi {
@@ -20,5 +21,14 @@ class StarWarsApi {
     } else {
       throw Exception('Error');
     }
+  }
+
+  static Future favoriteId(int id) async {
+      final response = await http.post(favoriteUrl + id.toString());
+      Map<String, dynamic> responseJson = jsonDecode(response.body);
+      // List data = [responseJson];
+      // print(data[0].status);
+
+      return responseJson;
   }
 }

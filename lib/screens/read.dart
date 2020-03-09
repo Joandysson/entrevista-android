@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Read extends StatelessWidget {
-  String name;
-  String gender;
-  String mass;
-  String height;
+  final String name;
+  final String gender;
+  final String mass;
+  final String height;
 
-  Read({Key key, this.gender, this.height, this.mass, this.name})
-      : super(key: key);
+  Read({
+    Key key,
+    this.gender,
+    this.height,
+    this.mass,
+    this.name
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

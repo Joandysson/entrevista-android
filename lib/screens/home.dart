@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:exanpopcode/components/favorite/favorite.dart';
-import 'package:exanpopcode/components/list/listPeople.dart';
+import 'package:exanpopcode/screens/favorite.dart';
+import 'package:exanpopcode/screens/listPeople.dart';
 
 class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext con5text) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "ExanPopCode",
@@ -20,7 +20,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +28,13 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.home),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.star),
             onPressed: () async {
-              await Navigator.push(context, new MaterialPageRoute(builder: (context) => Favorite()));
+              await Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Favorite()));
             },
           ),
         ],

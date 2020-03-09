@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:exanpopcode/models/people.dart';
-import 'package:exanpopcode/models/starwarsapi.dart';
-import 'package:exanpopcode/components/read/read.dart';
+import 'package:exanpopcode/controllers/starwarsapi.dart';
+import 'package:exanpopcode/screens/read.dart';
+import 'package:exanpopcode/database/default.dart';
+import 'package:exanpopcode/utils/utils.dart';
 
 class ListPeople extends StatelessWidget {
   @override
@@ -30,6 +32,26 @@ class ListPeople extends StatelessWidget {
         itemCount: people.results == null ? 0 : people.results.length,
         itemBuilder: (BuildContext ctxt, int index) {
           String gender = "Não informado";
+          var db = new Default();
+          // List data = Utils.organizeLit(people.results[index]);
+          var id = db.insert(
+              'people',
+              'name, height, gender, mass, hair_color, skin_color, eye_color, birth_year, homeworld, species',
+              '?,?,?,?,?,?,?,?,?,?',
+              [
+                people.results[index].name,
+                people.results[index].height,
+                people.results[index].gender,
+                people.results[index].mass,
+                people.results[index].hairColor,
+                people.results[index].skinColor,
+                people.results[index].eyeColor,
+                people.results[index].birthYear,
+                people.results[index].homeworld,
+                people.results[index].species,
+              ]);
+
+          print(id);
 
           var name = people.results[index].name;
           var height = people.results[index].height;
